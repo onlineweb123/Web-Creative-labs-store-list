@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maathu Store List</title>
+
+<style>
+:root{
+  --bg:#f1f3f6;
+  --card:#ffffff;
+  --primary:#2d3436;
+  --accent:#0a84ff;
+  --accent2:#00b894;
+  --muted:#636e72;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:"Segoe UI", Arial, sans-serif;
+  background:linear-gradient(180deg,#eef2f7,#f8f9fb);
+  color:var(--primary);
+}
+
+/* HEADER */
+header{
+  background:linear-gradient(135deg,#0a84ff,#5f9cff);
+  color:#fff;
+  padding:26px 16px 22px;
+  text-align:center;
+  box-shadow:0 6px 20px rgba(10,132,255,.3);
+}
+
+header h1{
+  margin:0 0 14px;
+  font-size:30px;
+}
+
+/* SEARCH BAR */
+.search-box{
+  max-width:420px;
+  margin:0 auto;
+  position:relative;
+}
+
+.search-box input{
+  width:100%;
+  padding:12px 44px 12px 16px;
+  border:none;
+  border-radius:999px;
+  font-size:15px;
+  outline:none;
+}
+
+/* STORE LIST */
+#storeList{
+  padding:24px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+}
+
+/* STORE CARD */
+.store{
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:.25s ease;
+}
+
+.store:hover{
+  transform:translateY(-6px);
+}
+
+.store h3{
+  margin:0 0 10px;
+  font-size:18px;
+  color:var(--accent);
+}
+
+.store p{
+  margin:5px 0;
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* LINK BOX */
+.link-box{
+  margin-top:8px;
+  padding:8px 10px;
+  background:#f4f6fa;
+  border-radius:8px;
+  font-size:13px;
+  color:#444;
+}
+
+/* BUTTONS */
+.btn-group{
+  margin-top:14px;
+  display:flex;
+  gap:12px;
+}
+
+.btn{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:999px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.copy-btn{
+  background:linear-gradient(135deg,#00b894,#00cec9);
+  color:#fff;
+}
+
+.open-btn{
+  background:linear-gradient(135deg,#0a84ff,#5f9cff);
+  color:#fff;
+  text-decoration:none;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🛒 Store Listing</h1>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Store / Category / Location தேடவும்">
+  </div>
+</header>
+
+<section id="storeList">
+
+  <!-- STORE 1 -->
+  <div class="store">
+    <h3>Maathu Grocery</h3>
+    <p>📦 Grocery</p>
+    <p>📍 Cuddalore</p>
+
+    <!-- COPY LINK -->
+    <div class="link-box" id="copy1">https://onlineweb123.github.io/Web-Creative-Labs/</div>
+
+    <div class="btn-group">
+      <button class="btn copy-btn" onclick="copyText('copy1')">📋 Copy</button>
+      <!-- OPEN LINK -->
+      <a class="btn open-btn" href="https://onlineweb123.github.io/Web-Creative-Labs/" target="_blank">🔗 Open</a>
+    </div>
+  </div>
+
+  <!-- STORE 2 -->
+  <div class="store">
+    <h3>Tech World</h3>
+    <p>📦 Electronics</p>
+    <p>📍 Chennai</p>
+
+    <div class="link-box" id="copy2">https://techworld.in/share</div>
+
+    <div class="btn-group">
+      <button class="btn copy-btn" onclick="copyText('copy2')">📋 Copy</button>
+      <a class="btn open-btn" href="https://techworld.in" target="_blank">🔗 Open</a>
+    </div>
+  </div>
+
+  <!-- STORE 3 -->
+  <div class="store">
+    <h3>Fashion Hub</h3>
+    <p>📦 Clothing</p>
+    <p>📍 Villupuram</p>
+
+    <div class="link-box" id="copy3">https://fashionhub.shop/share</div>
+
+    <div class="btn-group">
+      <button class="btn copy-btn" onclick="copyText('copy3')">📋 Copy</button>
+      <a class="btn open-btn" href="https://fashionhub.shop" target="_blank">🔗 Open</a>
+    </div>
+  </div>
+
+</section>
+
+<script>
+function copyText(id){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copy Link Copy ஆயிடுச்சு ✅");
+}
+
+/* SEARCH */
+document.getElementById("searchInput").addEventListener("keyup",function(){
+  const value=this.value.toLowerCase();
+  document.querySelectorAll(".store").forEach(store=>{
+    store.style.display = store.innerText.toLowerCase().includes(value) ? "block" : "none";
+  });
+});
+</script>
+
+</body>
+</html>
